@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIMF — Andrew Inbound Message Format</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#5a5a5a; --line:#ddd; --accent:#0b5fff; --bg:#fff; --card:#f7f7f5; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#eee; --muted:#aaa; --line:#333; --bg:#121212; --card:#1c1c1c; --accent:#6ea8ff; } }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--fg); background:var(--bg); margin:0; line-height:1.55; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 8px; }
+  .version { color: var(--muted); margin-bottom: 24px; }
+  .card { background: var(--card); border:1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+  button { background: var(--accent); color:#fff; border:0; border-radius: 8px; padding: 10px 16px; font-size: 1rem; cursor: pointer; }
+  button.secondary { background: transparent; color: var(--accent); border:1px solid var(--accent); }
+  button:active { opacity:.8; }
+  code, .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .92em; word-break: break-all; }
+  a { color: var(--accent); }
+  ol, ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 8px 6px; font-size: .95rem; }
+  .small { color: var(--muted); font-size: .92rem; }
+  .copied { color: green; font-size:.9rem; margin-left: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>AIMF — Andrew Inbound Message Format</h1>
+  <p class="version">Current version: <strong>v1.2</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
+
+  <p>AIMF is a small, documented format for sending information <em>into</em> Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: only senders on the allowlist, only messages that match the documented schema, and only a few defined message types are ever processed. Everything else is simply shown to Andrew as-is. Nothing is ever sent, booked, bought, or deleted on the strength of an inbound message.</p>
+
+  <h2>Try it with your bot</h2>
+  <div class="card">
+    <p>One prompt turns your AI (Grok, Gemini, ChatGPT…) into an AIMF counterparty and walks it through a full trial: a capability statement, a draft agreement, one valid message, one deliberately invalid message so you can watch the gate work, and a proposal it cannot enact itself.</p>
+    <p>
+      <button id="copyPrompt">Copy the trial prompt</button><span class="copied" id="copiedPrompt"></span>
+    </p>
+    <p class="small">Then paste it as the first message in a fresh chat with your bot. Prefer the file? <a href="https://github.com/fourpshot/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> · Raw text for bots: <span class="mono">https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/trial-prompt.md</span></p>
+  </div>
+
+  <h2>Getting access for real</h2>
+  <ol>
+    <li>Run the trial above so your bot knows the format.</li>
+    <li>Your first real contact <em>is</em> an AIMF message — a NOTE or QUESTION carrying your identity (the email you'll send from), who you act for, and your purpose in one sentence. Send it to the address your inviter gave you personally; it isn't printed here.</li>
+    <li>Andrew's reply is the decision. Approval puts your identity on the allowlist under a Level 1 agreement (NOTE, FILE_DROP, STATUS) — from there, wider access is negotiated inside the protocol, one approved step at a time.</li>
+  </ol>
+  <p class="small">Bots: self-check your formatting against the <a href="https://github.com/fourpshot/aimf-protocol/blob/main/test-vectors.md">test vectors</a> before your first real message.</p>
+
+  <h2>The documents</h2>
+  <ul>
+    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/SPEC.md">SPEC.md</a> — the full protocol: envelope, message types, hard rules, negotiation &amp; agreements, and where changes are posted. Raw: <span class="mono">https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/SPEC.md</span></li>
+    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> — the self-contained trial prompt.</li>
+    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/test-vectors.md">test-vectors.md</a> — standard valid/invalid sample messages with expected verdicts.</li>
+    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/CHANGELOG.md">CHANGELOG.md</a> — version history. Changes are announced to active counterparties with an effective date (SPEC §9).</li>
+  </ul>
+
+  <h2>Agreement registry</h2>
+  <p class="small">Public listing only: agreement IDs, purposes, and expiry dates. Private terms never appear here.</p>
+  <table>
+    <tr><th>Agreement</th><th>Purpose</th><th>Expires</th></tr>
+    <tr><td colspan="3" class="small">No public agreements listed yet.</td></tr>
+  </table>
+
+  <h2>Inviting someone else? (for Andrew)</h2>
+  <div class="card">
+    <p><strong>Text version</strong></p>
+    <p class="small" id="inviteText">Trying a structured way for our assistants to exchange things — it's called AIMF. Everything's on one page: the format, a trial prompt you can paste into your bot, and how to request access. https://fourpshot.github.io/aimf-protocol/ If you're up for it, the page explains the rest — and your first message back is the access request.</p>
+    <p><button class="secondary" data-copy="inviteText">Copy text invite</button><span class="copied" id="copied-inviteText"></span></p>
+    <p><strong>Email version</strong></p>
+    <p class="small" id="inviteEmail">Subject: A structured way for our assistants to exchange things (AIMF)
+
+Hi — I'm trying a small protocol called AIMF for letting people (and their AIs) send information to my assistant safely. One page has everything: what it is, the current spec, a trial prompt you can paste into your bot to test it, and how access gets granted: https://fourpshot.github.io/aimf-protocol/
+
+The short version: messages follow a fixed format, only allowlisted senders using that format get processed, and nothing is ever acted on without my approval. Your first AIMF message — with your email identity and a one-sentence purpose — is itself the access request.
+
+Worth a look when you have a minute.</p>
+    <p><button class="secondary" data-copy="inviteEmail">Copy email invite</button><span class="copied" id="copied-inviteEmail"></span></p>
+  </div>
+
+  <p class="small">AIMF/1 · Maintained by Andrew with Muse. This page is a snapshot of the invite surface; the repository is the version of record.</p>
+</main>
+<script>
+  async function copyText(text, markerId) {
+    try { await navigator.clipboard.writeText(text); }
+    catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+    }
+    if (markerId) { const m = document.getElementById(markerId); m.textContent = 'Copied ✓'; setTimeout(() => m.textContent = '', 2000); }
+  }
+  document.getElementById('copyPrompt').addEventListener('click', async () => {
+    const res = await fetch('trial-prompt.md');
+    const text = await res.text();
+    copyText(text, 'copiedPrompt');
+  });
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.getAttribute('data-copy'));
+      copyText(el.innerText, 'copied-' + btn.getAttribute('data-copy'));
+    });
+  });
+</script>
+</body>
+</html>
