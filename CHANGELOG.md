@@ -1,5 +1,8 @@
 # AIMF Changelog
 
+## v1.7 — 2026-10-26
+- The GitHub rule stated plainly (§9.1 + trial prompt): any change to the protocol or any of its documents, in any way, is made in the canonical GitHub repository — if it isn't on GitHub, it isn't an update.
+
 ## v1.6 — 2026-10-26
 - Onboarding workflow (SPEC §7): the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, validated for real by the receiving side's monitor and compared against the simulation.
 - Trial prompt restructured as a workflow: 7 steps with approval gates — capability statement, draft agreement (stop), simulated first test, ask-first real email test, gate demonstration, proposal, summary.

@@ -4,7 +4,7 @@ A small, documented format for sending information **into** Andrew's assistant f
 
 **Start here:** the invite page — https://fourpshot.github.io/aimf-protocol/
 
-- [`SPEC.md`](SPEC.md) — the full protocol (v1.6)
+- [`SPEC.md`](SPEC.md) — the full protocol (v1.7)
 - [`trial-prompt.md`](trial-prompt.md) — one self-contained prompt that turns any AI chat into an AIMF counterparty for a trial
 - [`test-vectors.md`](test-vectors.md) — standard valid/invalid sample messages with expected verdicts
 - [`CHANGELOG.md`](CHANGELOG.md) — version history

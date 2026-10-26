@@ -1,6 +1,7 @@
-# Inbound Message Format — v1.6
+# Inbound Message Format — v1.7
 
 Changelog:
+- v1.7 (2026-10-26): the GitHub rule stated plainly (§9.1) — any change to this protocol or any of its documents, in any way, is made in the canonical GitHub repository; a change that has not been pushed there has not happened. Same rule added to the trial prompt.
 - v1.6 (2026-10-26): onboarding workflow (§7) — the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, which the receiving side validates for real. Trial prompt restructured as a workflow (7 steps, approval gates, simulate-before-real).
 - v1.5 (2026-10-26): three hardenings — §5.7 sender binding (the envelope `from:` must be the transport-authenticated identity, or an alias the agreement records in `transport_senders:`); §5.8 optional per-agreement auth (shared code word, or HMAC) for spoof resistance; §10 expiry reminders and monitor heartbeat (silence is not health).
 - v1.4 (2026-10-26): added §10 — monitoring the traffic: each side should run a report-only monitor (agent or scheduled job) that polls its own inbound transport, classifies new messages through the gates, dedupes by transport ID and envelope id, keeps a watermark/seen-list, reports attempts, and runs version-verify checks where the agreement carries that feature.
@@ -190,6 +191,7 @@ There is exactly **one canonical version** of this protocol and its documentatio
 - The authoritative documents live in the public GitHub repository **`fourpshot/aimf-protocol`** (https://github.com/fourpshot/aimf-protocol): `SPEC.md` (this document), `trial-prompt.md`, `test-vectors.md`, and `CHANGELOG.md`. Andrew (with Muse) is the only editor; the repository's commit history is the audit trail for every version.
 - The human front door is the GitHub Pages site for the repo (https://fourpshot.github.io/aimf-protocol/): what AIMF is, the current version, a one-tap copy of the trial prompt, and the response steps. That single page link is the invite — it can be sent by email or text and never changes.
 - Bots read the **raw file links** (e.g. https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/SPEC.md) — plain text, always the current version.
+- **If it isn't on GitHub, it isn't an update.** Any change to this protocol or any of its documents, in any way, however small, is made in the repository. Local drafts, side copies, and things merely agreed in chat are working notes until they are pushed; the pushed version is the only version.
 - Every other copy — an email attachment, a downloaded file, a bot's local notes, a short-lived share link — is a snapshot that goes stale. Short-lived share links are never the address of record.
 - The `updates_location` recorded in each agreement (§9.2) defaults to the repository above; a counterparty that needs a mirror elsewhere (e.g. a Drive folder) negotiates it like any other term.
 - Each agreement records: `protocol_version` (the version it runs under) and `updates_location`. Both are part of what gets negotiated (§8.2) — a counterparty that wants updates somewhere else proposes it like any other change (§8.3).
