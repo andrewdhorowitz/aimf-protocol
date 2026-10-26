@@ -1,5 +1,11 @@
 # AIMF Changelog
 
+## v1.5 — 2026-10-26
+- Sender binding (SPEC §5.7): the envelope `from:` must be the transport-authenticated identity, or an alias recorded in the agreement's `transport_senders:` — otherwise the message fails the allowlist gate.
+- Optional per-agreement auth (SPEC §5.8): `auth: secret` (shared code word) or `auth: hmac` for spoof resistance; secrets never appear in any document or registry.
+- Monitoring (§10): agreement-expiry reminders (~7 days and ~1 day before) and a monitor heartbeat — silence is not health.
+- Test vectors X8 (identity not bound to transport sender) and X9 (required auth missing/wrong) added.
+
 ## v1.4 — 2026-10-26
 - Added SPEC §10 (monitoring the traffic): each side should run a report-only monitor (agent or scheduled job) over its own inbound transport — gate classification, watermark/seen-list bookkeeping, dedupe by transport ID and envelope id, attempt reporting, and version-verify checks where the agreement carries that feature. Trial prompt gained a matching MONITORING block; invite page gained a Monitoring section.
 

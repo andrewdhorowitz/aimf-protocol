@@ -107,3 +107,11 @@ A perfectly formatted FILE_DROP under AGR-2026-001 (purpose: schedule-file excha
 ### X7 — Attachment violations
 A FILE_DROP naming `runme.exe`, or with 11 attachments / 30 MB total.
 **Verdict: REJECT** — executables are refused outright; limits are 10 files / 25 MB per message (SPEC §4).
+
+### X8 — Envelope identity not bound to the transport sender
+The envelope says `from: sender@example.com` (allowlisted), but the email's authenticated header From is a different account (`other@example.net`), and the agreement records no `transport_senders:` mapping for it.
+**Verdict: REJECT at the allowlist gate** — the claimed identity is not proven (SPEC §5.7, sender binding).
+
+### X9 — Agreement requires auth; auth missing or wrong
+The agreement records `auth: secret`, and the message carries no `auth:` envelope line (or the wrong code word).
+**Verdict: REJECT at the allowlist gate** (SPEC §5.8). The code word itself is never quoted in the failure report.
