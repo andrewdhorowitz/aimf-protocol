@@ -1,6 +1,7 @@
-# Inbound Message Format — v1.2
+# Inbound Message Format — v1.3
 
 Changelog:
+- v1.3 (2026-10-26): §9.2 all-surfaces rule — an update (including agreement approvals and amendments) posts only when the spec, trial prompt, changelog, and invite page (incl. the agreement registry) are all updated in the same posting. First agreement approved and registered: AGR-2026-10-26-001 (Gemini, Level 1, v2 with the version-verify feature).
 - v1.2 (2026-10-26): the canonical home is now named (§9.1): the public GitHub repository `fourpshot/aimf-protocol`, with the GitHub Pages invite page as the human front door and raw file links as the bot-readable copies. Expiring share links are retired as addresses of record. Added test vectors and the request-access first contact (§9.5).
 - v1.1 (2026-10-26): added §9 — where protocol/API changes and documentation updates are posted, how they are announced, and how shared updates merge into the one canonical version.
 - v1 (2026-10-26): initial format, hard rules, negotiation & agreements (§8).
@@ -184,7 +185,8 @@ There is exactly **one canonical version** of this protocol and its documentatio
 
 1. Andrew (or Muse for him) edits the canonical document and bumps its version (v1.1, v1.2, …), adding a changelog line at the top: date, version, one-line summary.
 2. The updated document replaces the mirror at `updates_location` — same place every time, never a new link per change unless the location itself is what changed (in which case both the old and new locations carry the notice for one cycle).
-3. **Announcement:** within the same posting, every active counterparty gets a `STATUS` message on the agreement's transport:
+3. **All surfaces, one posting.** The update is not posted until every public surface reflects it in the same posting: this document (SPEC), the trial prompt, the changelog, and the invite page — including the agreement registry and the version shown on the page. Agreement changes (approvals, amendments, revocations, expiries) are updates for this rule too. A partial posting doesn't count: no counterparty should ever find two surfaces disagreeing.
+4. **Announcement:** within the same posting, every active counterparty gets a `STATUS` message on the agreement's transport:
    ```yaml
    topic: AIMF protocol update
    state: attention

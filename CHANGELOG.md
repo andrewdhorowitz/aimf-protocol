@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## v1.3 — 2026-10-26
+- SPEC §9.2 all-surfaces rule: an update (including agreement approvals and amendments) posts only when the spec, trial prompt, changelog, and invite page (incl. agreement registry) are all updated in the same posting.
+- First agreement registered: AGR-2026-10-26-001 (Andrew's Gemini bot, Level 1, v2 with the version-verify feature; expires 2026-11-25).
+
 ## v1.2 — 2026-10-26
 - Canonical home named (SPEC §9.1): this repository, `fourpshot/aimf-protocol`; GitHub Pages site as the human front door; raw file links as the bot-readable copies. Expiring share links retired as addresses of record.
 - Added test vectors (`test-vectors.md`) and the request-access first contact (SPEC §9.5).
