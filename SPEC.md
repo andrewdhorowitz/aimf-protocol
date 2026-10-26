@@ -1,6 +1,7 @@
-# Inbound Message Format — v1.7
+# Inbound Message Format — v1.8
 
 Changelog:
+- v1.8 (2026-10-26): monitor and update acknowledgement are now REQUIRED — §10 retitled and strengthened (each side must run a monitor or an equivalent scheduled pull), and §9.3 adds the monitor requirement and the update ack: on an update announcement, the counterparty must reply with a STATUS ack naming the new version and effective date and record the version against its agreement; a missing ack is flagged "ack overdue," and the announcing side may pause a side that stays silent.
 - v1.7 (2026-10-26): the GitHub rule stated plainly (§9.1) — any change to this protocol or any of its documents, in any way, is made in the canonical GitHub repository; a change that has not been pushed there has not happened. Same rule added to the trial prompt.
 - v1.6 (2026-10-26): onboarding workflow (§7) — the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, which the receiving side validates for real. Trial prompt restructured as a workflow (7 steps, approval gates, simulate-before-real).
 - v1.5 (2026-10-26): three hardenings — §5.7 sender binding (the envelope `from:` must be the transport-authenticated identity, or an alias the agreement records in `transport_senders:`); §5.8 optional per-agreement auth (shared code word, or HMAC) for spoof resistance; §10 expiry reminders and monitor heartbeat (silence is not health).
@@ -213,6 +214,8 @@ There is exactly **one canonical version** of this protocol and its documentatio
 
 - Before sending under a new version, a counterparty **re-reads the canonical document at `updates_location`** — its own snapshot is never a defense. A message citing a superseded version after the effective date fails validation, and the failure note names the current version and where to read it.
 - A counterparty that cannot implement a posted change says so with a `STATUS` (`state: attention`) before the effective date; silence is taken as acceptance at the effective date. Non-acceptance doesn't block the change — it pauses that counterparty's agreement (messages held, shown to Andrew) until the humans resolve it.
+- **Monitor required.** Each counterparty side maintains a monitor (§10) — or an equivalent scheduled pull of its transport and the canonical document — so announcements are actually seen. A side with nothing watching its transport is out of compliance with its agreement.
+- **Update acknowledgement (required).** On receiving an update announcement, the counterparty replies on the agreement's transport with a `STATUS` ack (topic: "AIMF protocol update", `state: ok`) naming the new version and its effective date, records the new protocol version against its agreement, and confirms it to its human — before the effective date where practicable, and in all cases promptly after it. The ack is the receipt that proves the announcement landed; it does not change the acceptance rule above (silence still counts as acceptance of the change itself). A missing ack is flagged by the announcing side's monitor as "ack overdue," and a side that stays silent may be paused by Andrew until contact is re-established.
 
 ### 9.4 Shared updates from the other side
 
@@ -228,9 +231,9 @@ There is exactly **one canonical version** of this protocol and its documentatio
 
 ---
 
-## 10. Monitoring the traffic (recommended)
+## 10. Monitoring the traffic (required)
 
-Neither side should rely on a human noticing AIMF mail in a busy inbox. Each side SHOULD run a **monitor**: an agent or scheduled job, local to that side, that watches its own inbound transport.
+Neither side may rely on a human noticing AIMF mail in a busy inbox. Each side MUST run a **monitor** — an agent or scheduled job, local to that side, that watches its own inbound transport — or maintain an equivalent scheduled pull of its transport and the canonical document on the same cadence (§9.3).
 
 - **Cadence:** every 15–30 minutes during the hours the humans are active (suggested 7 AM–10 PM local); faster — every few minutes — during a live test, by agreement.
 - **What it does:** polls the transport for AIMF-shaped messages (envelope markers, or a subject equal to a message type) and classifies each new one in gate order — allowlist → schema → known type → agreement & purpose — then reports it to its human with the verdict. Accepted messages are reported per §5.4; a `STATUS` with `state: ok` may be logged silently.

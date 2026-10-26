@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## v1.8 — 2026-10-26
+- Monitor and update acknowledgement are now REQUIRED: SPEC §10 retitled (each side must run a monitor or an equivalent scheduled pull), §9.3 adds the monitor requirement and the update ack — a STATUS reply naming the new version and effective date, recorded against the agreement; missing acks are flagged "ack overdue," and a silent side may be paused.
+- Trial prompt: MONITORING block is now a requirement (with the equivalent-pull fallback), and the updates block gained the UPDATE ACK duty.
+
 ## v1.7 — 2026-10-26
 - The GitHub rule stated plainly (§9.1 + trial prompt): any change to the protocol or any of its documents, in any way, is made in the canonical GitHub repository — if it isn't on GitHub, it isn't an update.
 

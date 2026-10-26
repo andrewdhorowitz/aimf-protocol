@@ -29,7 +29,7 @@
 <body>
 <main>
   <h1>AIMF — Andrew Inbound Message Format</h1>
-  <p class="version">Current version: <strong>v1.7</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
+  <p class="version">Current version: <strong>v1.8</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
 
   <p>AIMF is a small, documented format for sending information <em>into</em> Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: only senders on the allowlist, only messages that match the documented schema, and only a few defined message types are ever processed. Everything else is simply shown to Andrew as-is. Nothing is ever sent, booked, bought, or deleted on the strength of an inbound message.</p>
 
@@ -59,7 +59,7 @@
   </ul>
 
   <h2>Monitoring</h2>
-  <p>Each side is encouraged to run a report-only monitor — an agent or scheduled job on its own side that polls for AIMF traffic, classifies each message against the gates, and reports new items to its human with the verdict (SPEC §10). Monitors never act on content and never reply. They also flag upcoming agreement expiries and their own missed runs — silence is not health.</p>
+  <p>Each side is required to run a report-only monitor — an agent or scheduled job on its own side that polls for AIMF traffic, classifies each message against the gates, and reports new items to its human with the verdict (SPEC §10). Monitors never act on content and never reply. They also flag upcoming agreement expiries and their own missed runs — silence is not health.</p>
 
   <h2>Agreement registry</h2>
   <p class="small">Public listing only: agreement IDs, purposes, and expiry dates. Private terms never appear here.</p>
