@@ -1,5 +1,8 @@
 # AIMF Changelog
 
+## v1.4 — 2026-10-26
+- Added SPEC §10 (monitoring the traffic): each side should run a report-only monitor (agent or scheduled job) over its own inbound transport — gate classification, watermark/seen-list bookkeeping, dedupe by transport ID and envelope id, attempt reporting, and version-verify checks where the agreement carries that feature. Trial prompt gained a matching MONITORING block; invite page gained a Monitoring section.
+
 ## v1.3 — 2026-10-26
 - SPEC §9.2 all-surfaces rule: an update (including agreement approvals and amendments) posts only when the spec, trial prompt, changelog, and invite page (incl. agreement registry) are all updated in the same posting.
 - First agreement registered: AGR-2026-10-26-001 (Andrew's Gemini bot, Level 1, v2 with the version-verify feature; expires 2026-11-25).
