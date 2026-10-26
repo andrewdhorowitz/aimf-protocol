@@ -29,13 +29,13 @@
 <body>
 <main>
   <h1>AIMF — Andrew Inbound Message Format</h1>
-  <p class="version">Current version: <strong>v1.5</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
+  <p class="version">Current version: <strong>v1.6</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
 
   <p>AIMF is a small, documented format for sending information <em>into</em> Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: only senders on the allowlist, only messages that match the documented schema, and only a few defined message types are ever processed. Everything else is simply shown to Andrew as-is. Nothing is ever sent, booked, bought, or deleted on the strength of an inbound message.</p>
 
   <h2>Try it with your bot</h2>
   <div class="card">
-    <p>One prompt turns your AI (Grok, Gemini, ChatGPT…) into an AIMF counterparty and walks it through a full trial: a capability statement, a draft agreement, one valid message, one deliberately invalid message so you can watch the gate work, and a proposal it cannot enact itself.</p>
+    <p>One prompt turns your AI (Grok, Gemini, ChatGPT…) into an AIMF counterparty and walks it through a full trial: a capability statement, a draft agreement that stops for approval, a simulated first test, a real email send test it must ask permission for, one deliberately invalid message so you can watch the gate work, and a proposal it cannot enact itself.</p>
     <p>
       <button id="copyPrompt">Copy the trial prompt</button><span class="copied" id="copiedPrompt"></span>
     </p>

@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## v1.6 — 2026-10-26
+- Onboarding workflow (SPEC §7): the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, validated for real by the receiving side's monitor and compared against the simulation.
+- Trial prompt restructured as a workflow: 7 steps with approval gates — capability statement, draft agreement (stop), simulated first test, ask-first real email test, gate demonstration, proposal, summary.
+
 ## v1.5 — 2026-10-26
 - Sender binding (SPEC §5.7): the envelope `from:` must be the transport-authenticated identity, or an alias recorded in the agreement's `transport_senders:` — otherwise the message fails the allowlist gate.
 - Optional per-agreement auth (SPEC §5.8): `auth: secret` (shared code word) or `auth: hmac` for spoof resistance; secrets never appear in any document or registry.

@@ -1,6 +1,7 @@
-# Inbound Message Format — v1.5
+# Inbound Message Format — v1.6
 
 Changelog:
+- v1.6 (2026-10-26): onboarding workflow (§7) — the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, which the receiving side validates for real. Trial prompt restructured as a workflow (7 steps, approval gates, simulate-before-real).
 - v1.5 (2026-10-26): three hardenings — §5.7 sender binding (the envelope `from:` must be the transport-authenticated identity, or an alias the agreement records in `transport_senders:`); §5.8 optional per-agreement auth (shared code word, or HMAC) for spoof resistance; §10 expiry reminders and monitor heartbeat (silence is not health).
 - v1.4 (2026-10-26): added §10 — monitoring the traffic: each side should run a report-only monitor (agent or scheduled job) that polls its own inbound transport, classifies new messages through the gates, dedupes by transport ID and envelope id, keeps a watermark/seen-list, reports attempts, and runs version-verify checks where the agreement carries that feature.
 - v1.3 (2026-10-26): §9.2 all-surfaces rule — an update (including agreement approvals and amendments) posts only when the spec, trial prompt, changelog, and invite page (incl. the agreement registry) are all updated in the same posting. First agreement approved and registered: AGR-2026-10-26-001 (Gemini, Level 1, v2 with the version-verify feature).
@@ -111,6 +112,8 @@ purpose: Updated schedule for next month — check it against the calendar
 ## 7. For the sender's bot builder
 
 Emit the envelope exactly as YAML at the top of the message body, keep bodies plain, and give each message a unique `id`. If your bot needs a new action verb or message type, it can't invent one — Andrew adds it to this document, and the new version is the contract.
+
+**Onboarding workflow — simulate first, then ask, then send.** A new counterparty's bot first runs the whole exchange *in simulation* inside its own chat: one conforming message plus the validation report the receiving side would produce, gate by gate. Only after the simulation passes does the bot **prompt its human for explicit permission** to run a real send test: one real message to the access point, validated for real by the receiving side's monitor, with the returned verdict compared against the simulation. A bot never sends real mail on its own initiative, and a declined prompt simply skips the real test — the trial continues in simulation.
 
 ---
 
