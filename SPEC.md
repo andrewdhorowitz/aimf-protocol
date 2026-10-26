@@ -1,6 +1,7 @@
-# Inbound Message Format — v1.8
+# Inbound Message Format — v1.9
 
 Changelog:
+- v1.9 (2026-10-26): canonical `update-prompt.md` added — the standard nudge for a new version is a pointer prompt from the repository (it carries no changes itself; a copy that differs from the repo copy is not genuine) (§9.2). Onboarding now requires each side to declare its update-watching method, recorded in the agreement (§8.2, §9.3, trial Step 2).
 - v1.8 (2026-10-26): monitor and update acknowledgement are now REQUIRED — §10 retitled and strengthened (each side must run a monitor or an equivalent scheduled pull), and §9.3 adds the monitor requirement and the update ack: on an update announcement, the counterparty must reply with a STATUS ack naming the new version and effective date and record the version against its agreement; a missing ack is flagged "ack overdue," and the announcing side may pause a side that stays silent.
 - v1.7 (2026-10-26): the GitHub rule stated plainly (§9.1) — any change to this protocol or any of its documents, in any way, is made in the canonical GitHub repository; a change that has not been pushed there has not happened. Same rule added to the trial prompt.
 - v1.6 (2026-10-26): onboarding workflow (§7) — the first test runs in simulation inside the chat; the bot then prompts its human for explicit permission before one real send test, which the receiving side validates for real. Trial prompt restructured as a workflow (7 steps, approval gates, simulate-before-real).
@@ -148,6 +149,7 @@ purpose: "Exchange marching-band schedule files and notes"
 allowed_types: [NOTE, FILE_DROP, STATUS]
 allowed_actions: []            # no REQUEST actions yet
 transport: email
+update_watch: ""              # how each side watches for protocol updates: monitor or scheduled pull (§9.3)
 
 transport_senders: []          # other authenticated identities this party may arrive as (§5.7)
 
@@ -203,6 +205,8 @@ There is exactly **one canonical version** of this protocol and its documentatio
 2. The updated document replaces the mirror at `updates_location` — same place every time, never a new link per change unless the location itself is what changed (in which case both the old and new locations carry the notice for one cycle).
 3. **All surfaces, one posting.** The update is not posted until every public surface reflects it in the same posting: this document (SPEC), the trial prompt, the changelog, and the invite page — including the agreement registry and the version shown on the page. Agreement changes (approvals, amendments, revocations, expiries) are updates for this rule too. A partial posting doesn't count: no counterparty should ever find two surfaces disagreeing.
 4. **Announcement:** within the same posting, every active counterparty gets a `STATUS` message on the agreement's transport:
+
+**Update prompt.** The standard way to nudge a counterparty is the canonical `update-prompt.md` in the repository: its human pastes it to their bot, and the bot re-reads the canonical documents, records the new version against its agreement, and sends the §9.3 acknowledgement. The prompt is a pointer, never a payload — it carries no changes itself, and a copy that differs from the repository copy is not genuine; a bot handed one verifies it against the repository before running it.
    ```yaml
    topic: AIMF protocol update
    state: attention
@@ -214,7 +218,7 @@ There is exactly **one canonical version** of this protocol and its documentatio
 
 - Before sending under a new version, a counterparty **re-reads the canonical document at `updates_location`** — its own snapshot is never a defense. A message citing a superseded version after the effective date fails validation, and the failure note names the current version and where to read it.
 - A counterparty that cannot implement a posted change says so with a `STATUS` (`state: attention`) before the effective date; silence is taken as acceptance at the effective date. Non-acceptance doesn't block the change — it pauses that counterparty's agreement (messages held, shown to Andrew) until the humans resolve it.
-- **Monitor required.** Each counterparty side maintains a monitor (§10) — or an equivalent scheduled pull of its transport and the canonical document — so announcements are actually seen. A side with nothing watching its transport is out of compliance with its agreement.
+- **Monitor required.** Each counterparty side maintains a monitor (§10) — or an equivalent scheduled pull of its transport and the canonical document — so announcements are actually seen. A side with nothing watching its transport is out of compliance with its agreement. The method is declared during onboarding and recorded in the agreement (§8.2); a side that cannot name its method has not completed onboarding.
 - **Update acknowledgement (required).** On receiving an update announcement, the counterparty replies on the agreement's transport with a `STATUS` ack (topic: "AIMF protocol update", `state: ok`) naming the new version and its effective date, records the new protocol version against its agreement, and confirms it to its human — before the effective date where practicable, and in all cases promptly after it. The ack is the receipt that proves the announcement landed; it does not change the acceptance rule above (silence still counts as acceptance of the change itself). A missing ack is flagged by the announcing side's monitor as "ack overdue," and a side that stays silent may be paused by Andrew until contact is re-established.
 
 ### 9.4 Shared updates from the other side

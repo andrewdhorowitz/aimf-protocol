@@ -29,7 +29,7 @@
 <body>
 <main>
   <h1>AIMF — Andrew Inbound Message Format</h1>
-  <p class="version">Current version: <strong>v1.8</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
+  <p class="version">Current version: <strong>v1.9</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
 
   <p>AIMF is a small, documented format for sending information <em>into</em> Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: only senders on the allowlist, only messages that match the documented schema, and only a few defined message types are ever processed. Everything else is simply shown to Andrew as-is. Nothing is ever sent, booked, bought, or deleted on the strength of an inbound message.</p>
 
@@ -54,6 +54,7 @@
   <ul>
     <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/SPEC.md">SPEC.md</a> — the full protocol: envelope, message types, hard rules, negotiation &amp; agreements, and where changes are posted. Raw: <span class="mono">https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/SPEC.md</span></li>
     <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> — the self-contained trial prompt.</li>
+    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/update-prompt.md">update-prompt.md</a> — the nudge prompt for new versions: it points your bot at the canonical documents, carries no changes itself</li>
     <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/test-vectors.md">test-vectors.md</a> — standard valid/invalid sample messages with expected verdicts.</li>
     <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/CHANGELOG.md">CHANGELOG.md</a> — version history. Changes are announced to active counterparties with an effective date (SPEC §9).</li>
   </ul>

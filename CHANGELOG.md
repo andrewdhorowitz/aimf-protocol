@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## v1.9 — 2026-10-26
+- New canonical document: `update-prompt.md` — the standard nudge for a new version is a pointer prompt from the repository (SPEC §9.2). It carries no changes itself; a copy that differs from the repository copy is not genuine, and bots verify before running it.
+- Onboarding now requires each side to declare its update-watching method (monitor or scheduled pull), recorded in the agreement (§8.2, §9.3, trial Step 2).
+
 ## v1.8 — 2026-10-26
 - Monitor and update acknowledgement are now REQUIRED: SPEC §10 retitled (each side must run a monitor or an equivalent scheduled pull), §9.3 adds the monitor requirement and the update ack — a STATUS reply naming the new version and effective date, recorded against the agreement; missing acks are flagged "ack overdue," and a silent side may be paused.
 - Trial prompt: MONITORING block is now a requirement (with the equivalent-pull fallback), and the updates block gained the UPDATE ACK duty.
