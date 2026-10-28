@@ -1,5 +1,8 @@
 # AIMF Changelog
 
+## Example cleanup — 2026-10-28 (no protocol version change)
+- The SPEC examples now use the generic `counterparty@example.com` instead of a name-based example address. Protocol content is unchanged (still v1.9).
+
 ## Page presentation — 2026-10-28 (no protocol version change)
 - The invite page gained a meta description, a canonical link, Open Graph tags with a social card image (og-image.png), and an SVG favicon, so the link presents properly wherever it is pasted. Protocol content is unchanged (still v1.9).
 - The page also gained a GTranslate translation widget with browser-language detection, so visitors can read it in their own language; the trial prompt text itself is not translated.

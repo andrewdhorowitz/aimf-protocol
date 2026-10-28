@@ -103,7 +103,7 @@ Subject: FILE_DROP
 
 format: AIMF/1
 id: 2026-10-26-001
-from: scott@example.com
+from: counterparty@example.com
 type: FILE_DROP
 sent: 2026-10-26T17:00:00-04:00
 reply_to: main-chat
@@ -129,7 +129,7 @@ The format above is the menu. What a given sender may actually do under it is se
 Each side can publish a short structured statement of its side of the contract:
 
 ```yaml
-identity: scott@example.com
+identity: counterparty@example.com
 accepts: [NOTE, FILE_DROP, STATUS]
 offers: [NOTE, FILE_DROP]
 limits: "max 10 MB per message, max 5 messages/day"
@@ -144,7 +144,7 @@ The two **humans** agree the purpose in plain words. Muse records it as an agree
 ```yaml
 agreement: AGR-2026-001
 version: 1
-parties: [andrew, scott@example.com]
+parties: [andrew, counterparty@example.com]
 purpose: "Exchange marching-band schedule files and notes"
 allowed_types: [NOTE, FILE_DROP, STATUS]
 allowed_actions: []            # no REQUEST actions yet
