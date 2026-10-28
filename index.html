@@ -29,7 +29,7 @@
 <body>
 <main>
   <h1>AIMF — Andrew Inbound Message Format</h1>
-  <p class="version">Current version: <strong>v1.9</strong> · Canonical home: <a href="https://github.com/fourpshot/aimf-protocol">github.com/fourpshot/aimf-protocol</a></p>
+  <p class="version">Current version: <strong>v1.9</strong> · Canonical home: <a href="https://github.com/andrewdhorowitz/aimf-protocol">github.com/andrewdhorowitz/aimf-protocol</a></p>
 
   <p>AIMF is a small, documented format for sending information <em>into</em> Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: only senders on the allowlist, only messages that match the documented schema, and only a few defined message types are ever processed. Everything else is simply shown to Andrew as-is. Nothing is ever sent, booked, bought, or deleted on the strength of an inbound message.</p>
 
@@ -39,7 +39,7 @@
     <p>
       <button id="copyPrompt">Copy the trial prompt</button><span class="copied" id="copiedPrompt"></span>
     </p>
-    <p class="small">Then paste it as the first message in a fresh chat with your bot. Prefer the file? <a href="https://github.com/fourpshot/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> · Raw text for bots: <span class="mono">https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/trial-prompt.md</span></p>
+    <p class="small">Then paste it as the first message in a fresh chat with your bot. Prefer the file? <a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> · Raw text for bots: <span class="mono">https://raw.githubusercontent.com/andrewdhorowitz/aimf-protocol/main/trial-prompt.md</span></p>
   </div>
 
   <h2>Getting access for real</h2>
@@ -48,15 +48,15 @@
     <li>Your first real contact <em>is</em> an AIMF message — a NOTE or QUESTION carrying your identity (the email you'll send from), who you act for, and your purpose in one sentence. Send it to the address your inviter gave you personally; it isn't printed here.</li>
     <li>Andrew's reply is the decision. Approval puts your identity on the allowlist under a Level 1 agreement (NOTE, FILE_DROP, STATUS) — from there, wider access is negotiated inside the protocol, one approved step at a time.</li>
   </ol>
-  <p class="small">Bots: self-check your formatting against the <a href="https://github.com/fourpshot/aimf-protocol/blob/main/test-vectors.md">test vectors</a> before your first real message.</p>
+  <p class="small">Bots: self-check your formatting against the <a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/test-vectors.md">test vectors</a> before your first real message.</p>
 
   <h2>The documents</h2>
   <ul>
-    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/SPEC.md">SPEC.md</a> — the full protocol: envelope, message types, hard rules, negotiation &amp; agreements, and where changes are posted. Raw: <span class="mono">https://raw.githubusercontent.com/fourpshot/aimf-protocol/main/SPEC.md</span></li>
-    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> — the self-contained trial prompt.</li>
-    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/update-prompt.md">update-prompt.md</a> — the nudge prompt for new versions: it points your bot at the canonical documents, carries no changes itself</li>
-    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/test-vectors.md">test-vectors.md</a> — standard valid/invalid sample messages with expected verdicts.</li>
-    <li><a href="https://github.com/fourpshot/aimf-protocol/blob/main/CHANGELOG.md">CHANGELOG.md</a> — version history. Changes are announced to active counterparties with an effective date (SPEC §9).</li>
+    <li><a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/SPEC.md">SPEC.md</a> — the full protocol: envelope, message types, hard rules, negotiation &amp; agreements, and where changes are posted. Raw: <span class="mono">https://raw.githubusercontent.com/andrewdhorowitz/aimf-protocol/main/SPEC.md</span></li>
+    <li><a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/trial-prompt.md">trial-prompt.md</a> — the self-contained trial prompt.</li>
+    <li><a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/update-prompt.md">update-prompt.md</a> — the nudge prompt for new versions: it points your bot at the canonical documents, carries no changes itself</li>
+    <li><a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/test-vectors.md">test-vectors.md</a> — standard valid/invalid sample messages with expected verdicts.</li>
+    <li><a href="https://github.com/andrewdhorowitz/aimf-protocol/blob/main/CHANGELOG.md">CHANGELOG.md</a> — version history. Changes are announced to active counterparties with an effective date (SPEC §9).</li>
   </ul>
 
   <h2>Monitoring</h2>
@@ -72,12 +72,12 @@
   <h2>Inviting someone else? (for Andrew)</h2>
   <div class="card">
     <p><strong>Text version</strong></p>
-    <p class="small" id="inviteText">Trying a structured way for our assistants to exchange things — it's called AIMF. Everything's on one page: the format, a trial prompt you can paste into your bot, and how to request access. https://fourpshot.github.io/aimf-protocol/ If you're up for it, the page explains the rest — and your first message back is the access request.</p>
+    <p class="small" id="inviteText">Trying a structured way for our assistants to exchange things — it's called AIMF. Everything's on one page: the format, a trial prompt you can paste into your bot, and how to request access. https://andrewdhorowitz.github.io/aimf-protocol/ If you're up for it, the page explains the rest — and your first message back is the access request.</p>
     <p><button class="secondary" data-copy="inviteText">Copy text invite</button><span class="copied" id="copied-inviteText"></span></p>
     <p><strong>Email version</strong></p>
     <p class="small" id="inviteEmail">Subject: A structured way for our assistants to exchange things (AIMF)
 
-Hi — I'm trying a small protocol called AIMF for letting people (and their AIs) send information to my assistant safely. One page has everything: what it is, the current spec, a trial prompt you can paste into your bot to test it, and how access gets granted: https://fourpshot.github.io/aimf-protocol/
+Hi — I'm trying a small protocol called AIMF for letting people (and their AIs) send information to my assistant safely. One page has everything: what it is, the current spec, a trial prompt you can paste into your bot to test it, and how access gets granted: https://andrewdhorowitz.github.io/aimf-protocol/
 
 The short version: messages follow a fixed format, only allowlisted senders using that format get processed, and nothing is ever acted on without my approval. Your first AIMF message — with your email identity and a one-sentence purpose — is itself the access request.
 

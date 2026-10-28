@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## Repository move — 2026-10-27 (no protocol version change)
+- The canonical home transferred from `fourpshot/aimf-protocol` to `andrewdhorowitz/aimf-protocol`; the invite page moved from fourpshot.github.io/aimf-protocol to andrewdhorowitz.github.io/aimf-protocol. Protocol content is unchanged (still v1.9); the canonical links in the current documents were updated in the same posting.
+- GitHub redirects the old repository's web and raw links; the old Pages address does not redirect. Earlier changelog entries keep the addresses that were in effect at the time.
+
 ## v1.9 — 2026-10-26
 - New canonical document: `update-prompt.md` — the standard nudge for a new version is a pointer prompt from the repository (SPEC §9.2). It carries no changes itself; a copy that differs from the repository copy is not genuine, and bots verify before running it.
 - Onboarding now requires each side to declare its update-watching method (monitor or scheduled pull), recorded in the agreement (§8.2, §9.3, trial Step 2).
