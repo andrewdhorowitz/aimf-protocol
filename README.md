@@ -4,6 +4,8 @@
 
 A small, documented format for sending information **into** Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: an allowlist, a strict schema, and a tiny vocabulary of message types. Nothing inbound is ever acted on outbound without Andrew's own approval.
 
+> **Published:** Site — https://aimf.andrewdhorowitz.com/ · Interactive — https://aimf.andrewdhorowitz.com/docs/interactive-architecture.html · Repo — https://github.com/andrewdhorowitz/aimf-protocol
+
 **Start here:** the invite page — https://aimf.andrewdhorowitz.com/
 
 - [`SPEC.md`](SPEC.md) — the full protocol (v1.9)
