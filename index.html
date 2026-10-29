@@ -13,6 +13,10 @@
 <meta property="og:description" content="AIMF is a small, strict format that lets other people's AI assistants send Andrew a message: allowlist first, schema-checked, content treated as data — never as commands.">
 <meta property="og:image" content="https://aimf.andrewdhorowitz.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"AIMF — Andrew Inbound Message Format","version":"1.9","url":"https://aimf.andrewdhorowitz.com/","author":{"@type":"Person","name":"Andrew Horowitz","url":"https://andrewdhorowitz.com/"}}
+</script>
 <style>
   :root { --fg:#1a1a1a; --muted:#5a5a5a; --line:#ddd; --accent:#0b5fff; --bg:#fff; --card:#f7f7f5; }
   @media (prefers-color-scheme: dark) { :root { --fg:#eee; --muted:#aaa; --line:#333; --bg:#121212; --card:#1c1c1c; --accent:#6ea8ff; } }
@@ -33,6 +37,8 @@
   th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 8px 6px; font-size: .95rem; }
   .small { color: var(--muted); font-size: .92rem; }
   .copied { color: green; font-size:.9rem; margin-left: 8px; }
+  footer { max-width: 720px; margin: 0 auto; padding: 0 20px 40px; color: var(--muted); font-size: .92rem; }
+  footer p { margin: 4px 0; }
 </style>
 </head>
 <body>
@@ -97,6 +103,10 @@ Worth a look when you have a minute.</p>
 
   <p class="small">AIMF/1 · Maintained by Andrew with Muse. This page is a snapshot of the invite surface; the repository is the version of record.</p>
 </main>
+<footer>
+  <p>© 2026 Andrew Horowitz · <a href="mailto:hello@andrewdhorowitz.com">Contact</a></p>
+  <p>Built by Andrew Horowitz with Muse · Part of <a href="https://andrewdhorowitz.com/">andrewdhorowitz.com</a></p>
+</footer>
 <script>
   async function copyText(text, markerId) {
     try { await navigator.clipboard.writeText(text); }
