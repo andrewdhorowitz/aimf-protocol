@@ -1,5 +1,7 @@
 # AIMF — Andrew Inbound Message Format
 
+[![CI](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/ci.yml) [![Lighthouse](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/lighthouse.yml) [![Links](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/links.yml/badge.svg)](https://github.com/andrewdhorowitz/aimf-protocol/actions/workflows/links.yml)
+
 A small, documented format for sending information **into** Andrew's assistant from outside — by a person, or by another AI acting for them. The format is the security: an allowlist, a strict schema, and a tiny vocabulary of message types. Nothing inbound is ever acted on outbound without Andrew's own approval.
 
 **Start here:** the invite page — https://aimf.andrewdhorowitz.com/
