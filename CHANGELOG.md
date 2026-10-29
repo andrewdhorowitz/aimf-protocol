@@ -1,5 +1,9 @@
 # AIMF Changelog
 
+## Invite-page home — 2026-10-29 (no protocol version change)
+- The invite page's canonical address is now https://aimf.andrewdhorowitz.com/ (served by Cloudflare Pages from this same repository, adopted on a trial basis). The GitHub Pages address https://andrewdhorowitz.github.io/aimf-protocol/ stays live as a mirror. Protocol content is unchanged (still v1.9); the canonical and invite links in the current documents were updated in the same posting, following the 2026-10-27 repository-move pattern.
+- Earlier changelog entries keep the addresses that were in effect at the time.
+
 ## Example cleanup — 2026-10-28 (no protocol version change)
 - The SPEC examples now use the generic `counterparty@example.com` instead of a name-based example address. Protocol content is unchanged (still v1.9).
 
