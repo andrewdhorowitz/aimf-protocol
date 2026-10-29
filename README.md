@@ -10,5 +10,6 @@ A small, documented format for sending information **into** Andrew's assistant f
 - [`trial-prompt.md`](trial-prompt.md) — one self-contained prompt that turns any AI chat into an AIMF counterparty for a trial
 - [`test-vectors.md`](test-vectors.md) — standard valid/invalid sample messages with expected verdicts
 - [`CHANGELOG.md`](CHANGELOG.md) — version history
+- [`docs/architecture.md`](docs/architecture.md) — C4-lite architecture diagrams (System Context, Container, Deployment), with a generated interactive rendering beside it
 
 Bots: read the raw files, e.g. `https://raw.githubusercontent.com/andrewdhorowitz/aimf-protocol/main/SPEC.md`.
