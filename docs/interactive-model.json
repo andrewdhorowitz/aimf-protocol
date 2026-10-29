@@ -1,0 +1,150 @@
+{
+  "edges": {
+    "bot->chat": "envelope by chat",
+    "bot->drive": "envelope file",
+    "bot->mail": "envelope by email",
+    "bot->repo": "reads spec (raw)",
+    "ci->repo": "checks every push",
+    "monitor->chat": "polls",
+    "monitor->drive": "polls",
+    "monitor->mail": "polls",
+    "monitor->owner": "reports attempts",
+    "monitor->state": "dedupes",
+    "page->gt": "translates in-browser",
+    "page->wa": "analytics beacon",
+    "repo->mirror": "deploys mirror",
+    "repo->page": "deploys page",
+    "visitor->page": "reads invite"
+  },
+  "footer_note": "Interactive rendering of the canonical v3 diagram in docs/architecture.md (same folder) — the Mermaid source there is the source of truth, and this rendering is generated from the same model.",
+  "header_sub": "<b>Drag any box</b> to move it, <b>drag the background</b> to pan, <b>scroll / pinch buttons</b> to zoom, <b>click a box</b> for its details. Dragging explores the view — it does not change the canonical source (docs/architecture.md in this repo). Protocol v1.9.",
+  "nodes": {
+    "bot": {
+      "body": "Another AI (or a person) acting under an agreement: reads the spec from the repo, onboards by the trial workflow, and sends structured envelope messages.",
+      "host": "People",
+      "icon": "👤",
+      "k": "Person — counterparty",
+      "title": "External AI / bot"
+    },
+    "chat": {
+      "body": "One of the three envelope transports: the envelope as a message in a chat Andrew has designated.",
+      "host": "Message transports",
+      "icon": "☁️",
+      "k": "External service — chat",
+      "title": "Designated Chat"
+    },
+    "ci": {
+      "body": "The thin fleet-CI caller on every push: validation, link check, and Lighthouse, defined once in the shared kit's reusable workflow.",
+      "host": "GitHub",
+      "icon": "⚙️",
+      "k": "Worker — GitHub Actions",
+      "title": "CI Workflows"
+    },
+    "drive": {
+      "body": "One of the three envelope transports: the envelope as a dropped markdown file, named by its message ID.",
+      "host": "Message transports",
+      "icon": "☁️",
+      "k": "External service — Google Drive",
+      "title": "Shared Drive Folder"
+    },
+    "gt": {
+      "body": "Automatic translation of the invite page into the visitor's language, detected from the browser.",
+      "host": "Third-party services",
+      "icon": "☁️",
+      "k": "External service — cloud",
+      "title": "GTranslate"
+    },
+    "mail": {
+      "body": "One of the three envelope transports: the message type is the subject line, the envelope is the body.",
+      "host": "Message transports",
+      "icon": "☁️",
+      "k": "External service — Gmail",
+      "title": "Email"
+    },
+    "mirror": {
+      "body": "The invite page on the github.io address, kept as a mirror; its canonical tag points at aimf.andrewdhorowitz.com.",
+      "host": "GitHub Pages",
+      "icon": "🪟",
+      "k": "UI screen — static HTML",
+      "title": "GitHub Pages Mirror"
+    },
+    "monitor": {
+      "body": "Required by SPEC section 10, and report-only: polls the transports, classifies each new message through the gates (allowlist, schema, type, level), dedupes, runs version-verify checks, and reports attempts to Andrew. It never replies or acts.",
+      "host": "Muse — assistant side",
+      "icon": "⚙️",
+      "k": "Worker — scheduled job",
+      "title": "Attempt Monitor"
+    },
+    "owner": {
+      "body": "Reviews every inbound attempt, approves every agreement, and approves any action. Nothing inbound is acted on without him.",
+      "host": "People",
+      "icon": "👤",
+      "k": "Person — protocol owner",
+      "title": "Andrew"
+    },
+    "page": {
+      "body": "The canonical front door at aimf.andrewdhorowitz.com: what AIMF is, how to start, and the agreement registry.",
+      "host": "Cloudflare Pages",
+      "icon": "🪟",
+      "k": "UI screen — static HTML",
+      "title": "Invite Page"
+    },
+    "repo": {
+      "body": "andrewdhorowitz/aimf-protocol — canonical source: SPEC.md (v1.9), the trial prompt, test vectors, the changelog, and the invite page. If it isn't in the repo, it isn't an update.",
+      "host": "GitHub",
+      "icon": "📦",
+      "k": "Repo — source store",
+      "title": "AIMF Protocol Repo"
+    },
+    "state": {
+      "body": "The watermark and seen-message list used for dedupe, plus the version recorded against each agreement.",
+      "host": "Muse — assistant side",
+      "icon": "🛢️",
+      "k": "Database — files, assistant side",
+      "title": "Monitor State"
+    },
+    "visitor": {
+      "body": "Reads the invite page; may point their own AI at the protocol.",
+      "host": "People",
+      "icon": "👤",
+      "k": "Person — reader",
+      "title": "Human visitor"
+    },
+    "wa": {
+      "body": "Page-level counts for the subdomain, fed by the beacon script embedded in the page.",
+      "host": "Cloudflare Pages",
+      "icon": "🗄️",
+      "k": "Server — Cloudflare Web Analytics",
+      "title": "Web Analytics Beacon"
+    }
+  },
+  "panel_body": "The repo is the protocol: the <b>spec</b>, trial prompt, and test vectors live in GitHub, the <b>invite page</b> is served canonically by Cloudflare Pages with a GitHub Pages mirror, envelopes arrive over three <b>transports</b>, and one assistant-side <b>monitor</b> (a gear) classifies every attempt and reports it. Click any box for its job.",
+  "project": "AIMF",
+  "zones": {
+    "cloudflare": {
+      "sub": "Canonical hosting + analytics",
+      "title": "Cloudflare Pages"
+    },
+    "github": {
+      "sub": "Repo, Pages mirror, Actions",
+      "title": "GitHub"
+    },
+    "muse": {
+      "sub": "Automation runtime",
+      "title": "Muse — assistant side"
+    },
+    "third": {
+      "sub": "External widgets",
+      "title": "Third-party services"
+    },
+    "transports": {
+      "sub": "Where envelopes arrive",
+      "title": "Message transports"
+    }
+  },
+  "folded_elements": [
+    "spec",
+    "trial",
+    "vectors"
+  ]
+}
