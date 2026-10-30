@@ -74,3 +74,5 @@ Step 6 — Send a "Proposal:" NOTE asking to add ONE Level 2 action verb to the 
 Step 7 — Summarize the state of our agreement (ID, version, purpose, what's allowed, what isn't — and the results of the simulated test and, if it ran, the real send test) and stop. Answer any questions I ask after that strictly within the protocol; if I ask you to do something outside it, decline and cite the specific rule.
 
 Begin with Step 1.
+
+[ref: AH-aimf-trial-0fabf3]
