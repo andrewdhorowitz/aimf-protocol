@@ -40,9 +40,20 @@
   footer { max-width: 720px; margin: 0 auto; padding: 0 20px 40px; color: var(--muted); font-size: .92rem; }
   footer p { margin: 4px 0; }
   footer a { display: inline-block; padding: 4px 0; }
+  .site-header { max-width: 720px; margin: 0 auto; padding: 20px 20px 0;
+                 display: flex; align-items: center; gap: 10px; }
+  .site-header .mono { height: 1.6em; width: auto; fill: none;
+                 stroke: var(--fg); stroke-width: 6; stroke-linecap: round;
+                 stroke-linejoin: round; }
+  .site-header .mono .xbar { stroke: var(--accent); }
+  .site-header a.brand { color: var(--fg); text-decoration: none;
+                 font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; }
+  .site-header .surface { color: var(--muted); font-size: .95rem;
+                 margin-left: auto; }
 </style>
 </head>
 <body>
+<header class="site-header"><svg class="mono" viewBox="2 8 58 48" aria-hidden="true" focusable="false"><path d="M8 50 L20 14 L32 50"/><path class="xbar" d="M12.6 38 L27.4 38"/><path d="M38 14 V50 M54 14 V50 M38 32 H54"/></svg><a class="brand" href="https://andrewdhorowitz.com/">Andrew Horowitz</a><span class="surface">AIMF</span></header>
 <main>
   <h1>AIMF — Andrew Inbound Message Format</h1>
   <p class="version">Current version: <strong>v1.9</strong> · Canonical home: <a href="https://github.com/andrewdhorowitz/aimf-protocol">github.com/andrewdhorowitz/aimf-protocol</a></p>
